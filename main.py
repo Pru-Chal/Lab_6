@@ -21,6 +21,19 @@ def encode(password):
             encoded += str(new)
     return encoded
 
+def decode(password):
+    decoded = ''
+    for i in range(len(password)):
+        if int(password[i]) < 3:
+            num = int(password[i]) + 10
+            num -= 3
+            decoded += str(num)
+        else:
+            num = int(password[i])
+            num -= 3
+            decoded += str(num)
+    return(decoded)
+
 if __name__ == '__main__':
     while True:
         menu()
@@ -31,7 +44,8 @@ if __name__ == '__main__':
             print("Your Password has been encoded and stored!")
 
         if option == '2':
-            print(f"The encoded password is {encoded_new} and the original password is {password}.")
+            decoded_new = decode(encoded_new)
+            print(f"The encoded password is {encoded_new} and the original password is {decoded_new}.")
 
         if option == '3':
             break
